@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lost_found_app/constants/colors.dart';
+import 'package:lost_found_app/constants/strings.dart';
 
 import 'widgets/auth_input_field.dart';
 
@@ -77,13 +79,18 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Align(
+                     Align(
                       alignment: Alignment.center,
-                      child: Text("Not a User? Signup",style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromRGBO(55, 55, 55, 1)
-                      ),),
+                      child: InkWell(
+                        onTap: (){
+                          Get.offNamed(signupScreen);
+                        },
+                        child: const Text("Not a User? Signup",style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(55, 55, 55, 1)
+                        ),),
+                      ),
                     ),
                   ],
                 ),
