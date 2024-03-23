@@ -33,20 +33,23 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                  color: blueColor,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(30),
-                    topLeft: Radius.circular(30),
-                  )
-                ),
+                    color: blueColor,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(30),
+                      topLeft: Radius.circular(30),
+                    )),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    appButton(text: "LOST SOMETHING",onTap: (){
-                      Get.toNamed(lostSomthingScreen);
+                    appButton(text: "LOST SOMETHING", onTap: () {
+                      Get.toNamed(lostSomethingScreen);
                     }),
                     const SizedBox(height: 25),
-                    appButton(text: "FOUND SOMETHING",onTap: (){}),
+                    appButton(
+                        text: "FOUND SOMETHING",
+                        onTap: () {
+                          Get.toNamed(foundSomethingScreen);
+                        }),
                   ],
                 ),
               ),
@@ -61,14 +64,17 @@ class HomeScreen extends StatelessWidget {
     return TextButton(
       onPressed: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
           color: whiteColor,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Text(
           text,
-          style: const TextStyle(color: Color.fromRGBO(58, 58, 58, 1), fontSize: 23,fontWeight: FontWeight.w400),
+          style: const TextStyle(
+              color: Color.fromRGBO(58, 58, 58, 1),
+              fontSize: 23,
+              fontWeight: FontWeight.w400),
         ),
       ),
     );

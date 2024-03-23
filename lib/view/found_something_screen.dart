@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lost_found_app/constants/colors.dart';
 
-class LostSomethingScreen extends StatelessWidget {
-  const LostSomethingScreen({super.key});
+import '../model/categories_data.dart';
+
+class FoundSomethingScreen extends StatelessWidget {
+  const FoundSomethingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    CategoriesData categoriesData = CategoriesData();
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(
@@ -15,7 +18,7 @@ class LostSomethingScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(
-          "Lost Something",
+          "Found Something",
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
@@ -38,7 +41,7 @@ class LostSomethingScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              "Please select the item you lost",
+              "Please select the item you Found",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -47,42 +50,49 @@ class LostSomethingScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.62,
+              height: MediaQuery.of(context).size.height * 0.62,
               //width: 165,
               child: GridView.builder(
-                itemCount: 9,
+                itemCount: categoriesData.categoriesData.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 30,
-                  mainAxisSpacing: 20
-                ),
-                itemBuilder: (_, index) => Container(
-                  decoration: BoxDecoration(
-                    color: whiteColor,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.phone_android_outlined,
-                        size: 70,
-                      ),
-                      SizedBox(height: 16),
-                      Text(
-                        "Phone",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(55, 55, 55, 1)),
-                      )
-                    ],
-                  ),
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 30,
+                    mainAxisSpacing: 20),
+                itemBuilder: (_, index) => categoryCard(
+                  label: categoriesData.categoriesData[index].label,
+                  img: categoriesData.categoriesData[index].img,
                 ),
               ),
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget categoryCard({required String label, required String img}) {
+    return Container(
+      decoration: BoxDecoration(
+        color: whiteColor,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            img,
+            width: 80,
+            color: const Color.fromRGBO(37, 37, 37, 1),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            label,
+            style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color.fromRGBO(55, 55, 55, 1)),
+          ),
+        ],
       ),
     );
   }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lost_found_app/view/home_screen.dart';
 import 'package:lost_found_app/view/login_screen.dart';
-import 'package:lost_found_app/view/lost_something_screen.dart';
+import 'package:lost_found_app/view/found_something_screen.dart';
+import 'package:lost_found_app/view/lost_somthing_screen.dart';
 import 'package:lost_found_app/view/signup_screen.dart';
 
 import 'constants/strings.dart';
@@ -21,7 +22,11 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
         );
-        case lostSomthingScreen:
+        case foundSomethingScreen:
+        return MaterialPageRoute(
+          builder: (_) => const FoundSomethingScreen(),
+        );
+        case lostSomethingScreen:
         return MaterialPageRoute(
           builder: (_) => const LostSomethingScreen(),
         );
