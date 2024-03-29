@@ -55,9 +55,10 @@ class FoundSomethingScreen extends StatelessWidget {
               child: GridView.builder(
                 itemCount: categoriesData.categoriesData.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 30,
-                    mainAxisSpacing: 20),
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 30,
+                  mainAxisSpacing: 20,
+                ),
                 itemBuilder: (_, index) => categoryCard(
                   label: categoriesData.categoriesData[index].label,
                   img: categoriesData.categoriesData[index].img,

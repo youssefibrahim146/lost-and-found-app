@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lost_found_app/view/forget_password_screen.dart';
 import 'package:lost_found_app/view/home_screen.dart';
 import 'package:lost_found_app/view/login_screen.dart';
 import 'package:lost_found_app/view/found_something_screen.dart';
@@ -29,6 +30,10 @@ class AppRouter {
         case lostSomethingScreen:
         return MaterialPageRoute(
           builder: (_) => const LostSomethingScreen(),
+        );
+        case forgetPasswordScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ForgetPasswordScreen(),
         );
     }
   }

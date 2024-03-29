@@ -53,12 +53,17 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     const AuthInputField(label: "Password"),
                     const SizedBox(height: 10),
-                    const Text(
-                      "Forgot password?",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Color.fromRGBO(55, 55, 55, 1)),
+                    InkWell(
+                      onTap: () {
+                        Get.toNamed(forgetPasswordScreen);
+                      },
+                      child: const Text(
+                        "Forgot password?",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Color.fromRGBO(55, 55, 55, 1)),
+                      ),
                     ),
                     // sign in button
                     TextButton(
