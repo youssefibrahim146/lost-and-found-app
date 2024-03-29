@@ -1,24 +1,26 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lost_found_app/app_router.dart';
+import 'package:lost_found_app/constants/app_imports.dart';
 
-void main() {
-  runApp(MyApp(
-    appRouter: AppRouter(),
-  ));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  final AppRouter appRouter;
-
-  const MyApp({super.key, required this.appRouter});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      onGenerateRoute: appRouter.generateRoute,
+      title: AppStrings.appTitle,
+      getPages: AppRouts.appPages,
+      initialBinding: AppBindings(),
+      initialRoute: AppStrings.loginRout,
     );
   }
 }

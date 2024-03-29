@@ -1,10 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lost_found_app/constants/colors.dart';
+import 'package:lost_found_app/constants/app_imports.dart';
 
-import '../constants/strings.dart';
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetWidget<HomeController> {
   const HomeScreen({super.key});
 
   @override
@@ -18,13 +14,13 @@ class HomeScreen extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: Image.asset(
-                "assets/profile icon.png",
+                AppStrings.profileAsset,
                 width: 50,
                 height: 50,
               ),
             ),
             Image.asset(
-              "assets/lost and found icon.png",
+              AppStrings.lostAndFoundAsset,
               width: size.width,
               height: size.height * 0.48,
             ),
@@ -33,7 +29,7 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                    color: blueColor,
+                    color: AppColors.blueColor,
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(30),
                       topLeft: Radius.circular(30),
@@ -41,15 +37,19 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    appButton(text: "LOST SOMETHING", onTap: () {
-                      Get.toNamed(lostSomethingScreen);
-                    }),
+                    appButton(
+                      text: AppStrings.lostSomethingCaText,
+                      onTap: () {
+                        Get.toNamed(AppStrings.lostSomethingRout);
+                      },
+                    ),
                     const SizedBox(height: 25),
                     appButton(
-                        text: "FOUND SOMETHING",
-                        onTap: () {
-                          Get.toNamed(foundSomethingScreen);
-                        }),
+                      text: AppStrings.foundSomethingCaText,
+                      onTap: () {
+                        Get.toNamed(AppStrings.foundSomethingRout);
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -64,17 +64,21 @@ class HomeScreen extends StatelessWidget {
     return TextButton(
       onPressed: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 10,
+        ),
         decoration: BoxDecoration(
-          color: whiteColor,
+          color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Text(
           text,
           style: const TextStyle(
-              color: Color.fromRGBO(58, 58, 58, 1),
-              fontSize: 23,
-              fontWeight: FontWeight.w400),
+            color: Color.fromRGBO(58, 58, 58, 1),
+            fontSize: 23,
+            fontWeight: FontWeight.w400,
+          ),
         ),
       ),
     );

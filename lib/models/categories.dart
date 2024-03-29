@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Categories {
   final String img;
   final String label;

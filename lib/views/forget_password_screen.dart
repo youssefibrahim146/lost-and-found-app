@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:lost_found_app/constants/colors.dart';
+import 'package:lost_found_app/constants/app_imports.dart';
 
-class ForgetPasswordScreen extends StatelessWidget {
+class ForgetPasswordScreen extends GetWidget<ForgotPasswordController> {
   const ForgetPasswordScreen({super.key});
 
   @override
@@ -25,16 +24,16 @@ class ForgetPasswordScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: blueColor,
+                  color: AppColors.blueColor,
                   borderRadius: BorderRadius.circular(120),
                 ),
                 width: 200,
                 height: 200,
-                child: Image.asset("assets/sad face.png"),
+                child: Image.asset(AppStrings.sadFaceAsset),
               ),
               const SizedBox(height: 20),
               const Text(
-                "Forget Password",
+                AppStrings.forgotPasswordText,
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -43,7 +42,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               const Text(
-                "Enter the email address that associated with your account",
+                AppStrings.forgotPasswordSubTitleText,
                 style: TextStyle(
                   fontSize: 17,
                   color: Color.fromRGBO(105, 105, 105, 1),
@@ -52,7 +51,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               const SizedBox(height: 20),
               Container(
                 decoration: BoxDecoration(
-                  boxShadow:  [
+                  boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.20),
                       blurRadius: 20,
@@ -63,38 +62,47 @@ class ForgetPasswordScreen extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 25,
+                ),
                 child: Column(
                   children: [
                     TextField(
                       decoration: InputDecoration(
-                        labelText: "Email",
+                        labelText: AppStrings.emailText,
                         labelStyle: const TextStyle(
                           color: Color.fromRGBO(105, 105, 105, 1),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 3),
+                          borderSide: const BorderSide(
+                            color: Colors.black,
+                            width: 3,
+                          ),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 3),
+                          borderSide: const BorderSide(
+                            color: Colors.black,
+                            width: 3,
+                          ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 3),
+                          borderSide: const BorderSide(
+                            color: Colors.black,
+                            width: 3,
+                          ),
                         ),
                       ),
                     ),
                     const SizedBox(height: 20),
-                     Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
-                          "Send",
+                          AppStrings.sendText,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 35,
@@ -102,15 +110,16 @@ class ForgetPasswordScreen extends StatelessWidget {
                           ),
                         ),
                         InkWell(
-                          onTap: () {
-                            // Get.toNamed(loginScreen);
-                          },
+                          onTap: controller.onSubmitClick,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: blueColor,
+                              color: AppColors.blueColor,
                               borderRadius: BorderRadius.circular(40),
                             ),
-                            padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 30),
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 5,
+                              horizontal: 30,
+                            ),
                             child: const Icon(
                               Icons.arrow_forward_rounded,
                               color: Colors.white,

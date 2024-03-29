@@ -1,6 +1,6 @@
-import 'categories.dart';
+import 'package:lost_found_app/constants/app_imports.dart';
 
-class CategoriesData{
+class FoundSomethingController extends GetxController {
   List<Categories> categoriesData = [
     Categories(img: "assets/icons/phone.png", label: "Phone"),
     Categories(img: "assets/icons/key.png", label: "Key"),

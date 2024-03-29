@@ -1,14 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:lost_found_app/constants/colors.dart';
+import 'package:lost_found_app/constants/app_imports.dart';
 
-import '../model/categories_data.dart';
-
-class FoundSomethingScreen extends StatelessWidget {
+class FoundSomethingScreen extends GetWidget<FoundSomethingController> {
   const FoundSomethingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    CategoriesData categoriesData = CategoriesData();
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(
@@ -18,7 +14,7 @@ class FoundSomethingScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(
-          "Found Something",
+          AppStrings.foundSomethingSmText,
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
@@ -27,11 +23,14 @@ class FoundSomethingScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 5),
+        padding: const EdgeInsets.symmetric(
+          vertical: 40,
+          horizontal: 5,
+        ),
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
-          color: blueColor,
+          color: AppColors.blueColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
@@ -41,11 +40,11 @@ class FoundSomethingScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              "Please select the item you Found",
+              AppStrings.plsSelectTheItemYouFoundText,
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: whiteColor,
+                color: AppColors.whiteColor,
               ),
             ),
             const SizedBox(height: 40),
@@ -53,16 +52,19 @@ class FoundSomethingScreen extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.62,
               //width: 165,
               child: GridView.builder(
-                itemCount: categoriesData.categoriesData.length,
+                itemCount: controller.categoriesData.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 30,
                   mainAxisSpacing: 20,
                 ),
-                itemBuilder: (_, index) => categoryCard(
-                  label: categoriesData.categoriesData[index].label,
-                  img: categoriesData.categoriesData[index].img,
-                ),
+                itemBuilder: (BuildContext context, int index) {
+                  Categories category = controller.categoriesData[index];
+                  return categoryCard(
+                    label: category.label,
+                    img: category.img,
+                  );
+                },
               ),
             )
           ],
@@ -74,7 +76,7 @@ class FoundSomethingScreen extends StatelessWidget {
   Widget categoryCard({required String label, required String img}) {
     return Container(
       decoration: BoxDecoration(
-        color: whiteColor,
+        color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
@@ -89,9 +91,10 @@ class FoundSomethingScreen extends StatelessWidget {
           Text(
             label,
             style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Color.fromRGBO(55, 55, 55, 1)),
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(55, 55, 55, 1),
+            ),
           ),
         ],
       ),

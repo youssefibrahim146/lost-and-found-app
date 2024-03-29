@@ -1,22 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:lost_found_app/constants/colors.dart';
+import 'package:lost_found_app/constants/app_imports.dart';
 
-class LostSomethingScreen extends StatelessWidget {
+class LostSomethingScreen extends GetWidget<LostSomethingController> {
   const LostSomethingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: AppColors.whiteColor,
       appBar: AppBar(
         iconTheme: const IconThemeData(
           color: Colors.black,
           size: 35,
         ),
         elevation: 0,
-        backgroundColor: whiteColor,
+        backgroundColor: AppColors.whiteColor,
         title: const Text(
-          'Lost Something',
+          AppStrings.lostSomethingSmText,
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
@@ -27,33 +26,39 @@ class LostSomethingScreen extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+            ),
             width: double.infinity,
-            color: whiteColor,
+            color: AppColors.whiteColor,
             child: Image.asset(
-              "assets/sad face.png",
+              AppStrings.sadFaceAsset,
               width: 150,
               height: 150,
             ),
           ),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 35),
+              padding: const EdgeInsets.symmetric(
+                vertical: 35,
+              ),
               decoration: const BoxDecoration(
-                  color: blueColor,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(30),
-                    topLeft: Radius.circular(30),
-                  )),
-              child:  Column(
+                color: AppColors.blueColor,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30),
+                  topLeft: Radius.circular(30),
+                ),
+              ),
+              child: Column(
                 children: [
                   const Text(
-                    'Help Us to find your lost item',
+                    AppStrings.helpToFindYourLostItemText,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 20.0,
-                        color: whiteColor,
-                        fontWeight: FontWeight.bold),
+                      fontSize: 20.0,
+                      color: AppColors.whiteColor,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 75.0),
                   Row(
@@ -65,15 +70,15 @@ class LostSomethingScreen extends StatelessWidget {
                           Icon(
                             Icons.add_circle_outline,
                             size: 80.0,
-                            color: whiteColor,
+                            color: AppColors.whiteColor,
                           ),
                           SizedBox(height: 14),
                           Text(
-                            "Other",
+                            AppStrings.otherText,
                             style: TextStyle(
-                              color: whiteColor,
+                              color: AppColors.whiteColor,
                               fontWeight: FontWeight.w500,
-                              fontSize: 30
+                              fontSize: 30,
                             ),
                           )
                         ],
@@ -82,7 +87,7 @@ class LostSomethingScreen extends StatelessWidget {
                         width: 6,
                         height: 150,
                         decoration: BoxDecoration(
-                          color: whiteColor,
+                          color: AppColors.whiteColor,
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
@@ -91,15 +96,15 @@ class LostSomethingScreen extends StatelessWidget {
                           Icon(
                             Icons.search_rounded,
                             size: 80.0,
-                            color: whiteColor,
+                            color: AppColors.whiteColor,
                           ),
                           SizedBox(height: 14),
                           Text(
-                            "Search",
+                            AppStrings.searchText,
                             style: TextStyle(
-                                color: whiteColor,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 30
+                              color: AppColors.whiteColor,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 30,
                             ),
                           )
                         ],
