@@ -24,7 +24,7 @@ class ForgetPasswordScreen extends GetWidget<ForgotPasswordController> {
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: AppColors.blueColor,
+                  color: AppColors.blue,
                   borderRadius: BorderRadius.circular(120),
                 ),
                 width: 200,
@@ -66,70 +66,78 @@ class ForgetPasswordScreen extends GetWidget<ForgotPasswordController> {
                   horizontal: 10,
                   vertical: 25,
                 ),
-                child: Column(
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: AppStrings.emailText,
-                        labelStyle: const TextStyle(
-                          color: Color.fromRGBO(105, 105, 105, 1),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(
-                            color: Colors.black,
-                            width: 3,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(
-                            color: Colors.black,
-                            width: 3,
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(
-                            color: Colors.black,
-                            width: 3,
-                          ),
-                        ),
+                child: Form(
+                  key: controller.forgotPasswordFomState,
+                  child: Column(
+                    children: [
+                      AuthInputField(
+                        onSaved: (value) {
+                          controller.emailAddress = value;
+                        },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return AppStrings.emailEmptyValidate;
+                          } else if (!value.contains(AppStrings.atSign)) {
+                            return AppStrings.emailMessingAtSignValidate;
+                          }
+                          return null;
+                        },
+                        obscure: false,
+                        labelName: AppStrings.emailText,
+                        keyboardType: TextInputType.emailAddress,
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          AppStrings.sendText,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        InkWell(
-                          onTap: controller.onSubmitClick,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: AppColors.blueColor,
-                              borderRadius: BorderRadius.circular(40),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 5,
-                              horizontal: 30,
-                            ),
-                            child: const Icon(
-                              Icons.arrow_forward_rounded,
-                              color: Colors.white,
-                              size: 40,
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            AppStrings.sendText,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          Obx(
+                            () {
+                              return controller.isLoading.value
+                                  ? InkWell(
+                                      onTap: controller.onSubmitClick,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: AppColors.blue,
+                                          borderRadius: BorderRadius.circular(40),
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 5,
+                                          horizontal: 30,
+                                        ),
+                                        child: const Icon(
+                                          Icons.arrow_forward_rounded,
+                                          color: Colors.white,
+                                          size: 40,
+                                        ),
+                                      ),
+                                    )
+                                  : Container(
+                                      decoration: BoxDecoration(
+                                        color: AppColors.blue,
+                                        borderRadius: BorderRadius.circular(40),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 10,
+                                        horizontal: 10,
+                                      ),
+                                      child: CircularProgressIndicator(
+                                        color: Colors.white,
+                                      ),
+                                    );
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 20),

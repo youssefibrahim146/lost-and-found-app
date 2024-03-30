@@ -30,7 +30,7 @@ class FoundSomethingScreen extends GetWidget<FoundSomethingController> {
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
-          color: AppColors.blueColor,
+          color: AppColors.blue,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
@@ -44,7 +44,7 @@ class FoundSomethingScreen extends GetWidget<FoundSomethingController> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: AppColors.whiteColor,
+                color: AppColors.white,
               ),
             ),
             const SizedBox(height: 40),
@@ -76,7 +76,7 @@ class FoundSomethingScreen extends GetWidget<FoundSomethingController> {
   Widget categoryCard({required String label, required String img}) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.whiteColor,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(

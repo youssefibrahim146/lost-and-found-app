@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: AppStrings.appTitle,
       getPages: AppRouts.appPages,
       initialBinding: AppBindings(),
-      initialRoute: AppStrings.loginRout,
+      initialRoute: FirebaseAuth.instance.currentUser != null && FirebaseAuth.instance.currentUser!.emailVerified ? AppStrings.homeRout : AppStrings.loginRout,
     );
   }
 }
