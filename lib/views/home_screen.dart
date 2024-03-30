@@ -29,7 +29,7 @@ class HomeScreen extends GetWidget<HomeController> {
               child: Container(
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                    color: AppColors.blueColor,
+                    color: AppColors.blue,
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(30),
                       topLeft: Radius.circular(30),
@@ -69,7 +69,7 @@ class HomeScreen extends GetWidget<HomeController> {
           vertical: 10,
         ),
         decoration: BoxDecoration(
-          color: AppColors.whiteColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Text(

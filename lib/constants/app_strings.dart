@@ -26,6 +26,33 @@ class AppStrings {
   static const String keyAsset = "assets/icons/key.png";
   static const String bagAsset = "assets/icons/bag.png";
 
+  /// Collection, Documents, Fields Name
+  static const String descriptionField = "description";
+  static const String authUsersDocument = "authUsers";
+  static const String userEmailField = "userEmail";
+  static const String userNameField = "userName";
+  static const String usersCollection = "users";
+  static const String emailsField = "emails";
+  static const String emailField = "email";
+  static const String nameField = "name";
+
+  /// Toasts
+  static const String emailSentSuccessfullyToast = "Email sent successfully, please check your email to reset your password.";
+  static const String yourEmailNotInOurDatabaseToast = "Your email is not in our database, Try to signup with that email.";
+  static const String accountDeletedSuccessfullyToast = "Account deleted successfully.";
+  static const String connectionErrorToast = "Please check your internet connection.";
+  static const String verifyEmailFirstToast = "Please verify your email first.";
+
+  /// Validations
+  static const String passwordLargerThen24Validate = "Password can't be larger then 24 letters";
+  static const String nameLargerThen24Validate = "User name can't be larger then 24 letters";
+  static const String passwordLessThen8Validate = "Password can't be less then 8 letters";
+  static const String nameLessThen4Validate = "User name can't be less then 4 letters";
+  static const String emailEmptyValidate = "Email address can't be empty";
+  static const String emailMessingAtSignValidate = "Email is messing '@'";
+  static const String userNameEmptyValidate = "User Name can't be empty";
+  static const String passwordEmptyValidate = "Password can't be empty";
+
   /// Signs
   static const String closingSquareBracketSign = "]";
   static const String openingSquareBracketSign = "[";

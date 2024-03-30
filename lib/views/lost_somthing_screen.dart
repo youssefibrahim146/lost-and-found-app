@@ -6,14 +6,14 @@ class LostSomethingScreen extends GetWidget<LostSomethingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         iconTheme: const IconThemeData(
           color: Colors.black,
           size: 35,
         ),
         elevation: 0,
-        backgroundColor: AppColors.whiteColor,
+        backgroundColor: AppColors.white,
         title: const Text(
           AppStrings.lostSomethingSmText,
           style: TextStyle(
@@ -30,7 +30,7 @@ class LostSomethingScreen extends GetWidget<LostSomethingController> {
               vertical: 10,
             ),
             width: double.infinity,
-            color: AppColors.whiteColor,
+            color: AppColors.white,
             child: Image.asset(
               AppStrings.sadFaceAsset,
               width: 150,
@@ -43,7 +43,7 @@ class LostSomethingScreen extends GetWidget<LostSomethingController> {
                 vertical: 35,
               ),
               decoration: const BoxDecoration(
-                color: AppColors.blueColor,
+                color: AppColors.blue,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(30),
                   topLeft: Radius.circular(30),
@@ -56,7 +56,7 @@ class LostSomethingScreen extends GetWidget<LostSomethingController> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 20.0,
-                      color: AppColors.whiteColor,
+                      color: AppColors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -70,13 +70,13 @@ class LostSomethingScreen extends GetWidget<LostSomethingController> {
                           Icon(
                             Icons.add_circle_outline,
                             size: 80.0,
-                            color: AppColors.whiteColor,
+                            color: AppColors.white,
                           ),
                           SizedBox(height: 14),
                           Text(
                             AppStrings.otherText,
                             style: TextStyle(
-                              color: AppColors.whiteColor,
+                              color: AppColors.white,
                               fontWeight: FontWeight.w500,
                               fontSize: 30,
                             ),
@@ -87,7 +87,7 @@ class LostSomethingScreen extends GetWidget<LostSomethingController> {
                         width: 6,
                         height: 150,
                         decoration: BoxDecoration(
-                          color: AppColors.whiteColor,
+                          color: AppColors.white,
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
@@ -96,13 +96,13 @@ class LostSomethingScreen extends GetWidget<LostSomethingController> {
                           Icon(
                             Icons.search_rounded,
                             size: 80.0,
-                            color: AppColors.whiteColor,
+                            color: AppColors.white,
                           ),
                           SizedBox(height: 14),
                           Text(
                             AppStrings.searchText,
                             style: TextStyle(
-                              color: AppColors.whiteColor,
+                              color: AppColors.white,
                               fontWeight: FontWeight.w500,
                               fontSize: 30,
                             ),

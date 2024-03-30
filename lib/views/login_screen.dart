@@ -16,7 +16,7 @@ class LoginScreen extends GetWidget<LoginController> {
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.55,
               decoration: const BoxDecoration(
-                color: AppColors.blueColor,
+                color: AppColors.blue,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30),
@@ -29,7 +29,7 @@ class LoginScreen extends GetWidget<LoginController> {
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.whiteColor,
+                      color: AppColors.white,
                     ),
                   ),
                   Image.asset(
@@ -42,14 +42,55 @@ class LoginScreen extends GetWidget<LoginController> {
               ),
             ),
             Form(
+              key: controller.loginFomState,
               child: Container(
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const AuthInputField(AppStrings.emailText),
+                    AuthInputField(
+                      onSaved: (value) {
+                        controller.emailAddress = value;
+                      },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return AppStrings.emailEmptyValidate;
+                        } else if (!value.contains(AppStrings.atSign)) {
+                          return AppStrings.emailMessingAtSignValidate;
+                        }
+                        return null;
+                      },
+                      obscure: false,
+                      labelName: AppStrings.emailText,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
                     const SizedBox(height: 20),
-                    const AuthInputField(AppStrings.passwordText),
+                    Obx(
+                      () {
+                        return AuthInputField(
+                          onSaved: (value) {
+                            controller.password = value;
+                          },
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return AppStrings.passwordEmptyValidate;
+                            } else if (value.length < 8) {
+                              return AppStrings.passwordLessThen8Validate;
+                            } else if (value.length > 24) {
+                              return AppStrings.passwordLargerThen24Validate;
+                            }
+                            return null;
+                          },
+                          suffixIcon: InkWell(
+                            onTap: () => controller.obscureOnClick(),
+                            child: Icon(controller.isObscure.value ? Icons.visibility_off_rounded : Icons.visibility_rounded),
+                          ),
+                          obscure: controller.isObscure.value,
+                          labelName: AppStrings.passwordText,
+                          keyboardType: TextInputType.visiblePassword,
+                        );
+                      },
+                    ),
                     const SizedBox(height: 10),
                     InkWell(
                       onTap: controller.onForgotPasswordClick,
@@ -63,30 +104,44 @@ class LoginScreen extends GetWidget<LoginController> {
                       ),
                     ),
                     // sign in button
-                    TextButton(
-                      onPressed: controller.onSubmitClick,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 15,
-                            horizontal: 40,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.blueColor,
-                            borderRadius: BorderRadius.circular(28),
-                          ),
-                          child: const Text(
-                            AppStrings.signInText,
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.whiteColor,
-                            ),
-                          ),
-                        ),
+                    Center(
+                      child: Obx(
+                        () {
+                          return controller.isLoading.value == false
+                              ? InkWell(
+                                  onTap: controller.onSubmitClick,
+                                  child: Container(
+                                    height: 70,
+                                    width: 150,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      color: AppColors.blue,
+                                      borderRadius: BorderRadius.circular(28),
+                                    ),
+                                    child: Text(
+                                      AppStrings.signInText,
+                                      style: TextStyle(
+                                        color: AppColors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 30,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : CircleAvatar(
+                                  radius: 25,
+                                  backgroundColor: AppColors.blue,
+                                  child: Container(
+                                    padding: EdgeInsets.all(10),
+                                    child: CircularProgressIndicator(
+                                      color: AppColors.white,
+                                    ),
+                                  ),
+                                );
+                        },
                       ),
                     ),
+                    const SizedBox(height: 10),
                     // not a user text
                     Align(
                       alignment: Alignment.center,
