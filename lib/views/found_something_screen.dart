@@ -56,13 +56,19 @@ class FoundSomethingScreen extends GetWidget<FoundSomethingController> {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 30,
+
                   mainAxisSpacing: 20,
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   Categories category = controller.categoriesData[index];
-                  return categoryCard(
-                    label: category.label,
-                    img: category.img,
+                  return InkWell(
+                    onTap: () {
+                      Get.toNamed(AppStrings.addFoundItemRout, arguments: category);
+                    },
+                    child: categoryCard(
+                      label: category.label,
+                      img: category.img,
+                    ),
                   );
                 },
               ),

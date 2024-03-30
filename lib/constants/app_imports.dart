@@ -26,3 +26,7 @@ export 'package:lost_found_app/views/login_screen.dart';
 export 'package:lost_found_app/views/lost_somthing_screen.dart';
 export 'package:lost_found_app/views/signup_screen.dart';
 export 'package:lost_found_app/views/widgets/auth_input_field.dart';
+export 'package:lost_found_app/views/found_by_other.dart';
+export 'package:lost_found_app/views/found_by_search.dart';
+export 'package:lost_found_app/controllers/found_by_other_controller.dart';
+export 'package:lost_found_app/views/add_found_item_screen.dart';

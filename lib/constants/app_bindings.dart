@@ -27,5 +27,9 @@ class AppBindings extends Bindings {
       () => HomeController(),
       fenix: true,
     );
+    Get.lazyPut(
+      () => FoundByOtherController(),
+      fenix: true,
+    );
   }
 }

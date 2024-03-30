@@ -32,33 +32,20 @@ class AppRouts {
       page: () => const LostSomethingScreen(),
       transition: Transition.noTransition,
     ),
+    GetPage(
+      name: AppStrings.foundByOtherRout,
+      page: () => const FoundByOtherScreen(),
+      transition: Transition.noTransition,
+    ),
+    GetPage(
+      name: AppStrings.foundBySearchRout,
+      page: () => const FoundBySearchScreen(),
+      transition: Transition.noTransition,
+    ),
+    GetPage(
+      name: AppStrings.addFoundItemRout,
+      page: () => const AddFoundItemScreen(),
+      transition: Transition.noTransition,
+    ),
   ];
-// Route? generateRoute(RouteSettings settings) {
-//   switch (settings.name) {
-//     case AppStrings.loginScreen:
-//       return MaterialPageRoute(
-//         builder: (_) => const LoginScreen(),
-//       );
-//     case AppStrings.signupScreen:
-//       return MaterialPageRoute(
-//         builder: (_) => const SignupScreen(),
-//       );
-//     case AppStrings.homeScreen:
-//       return MaterialPageRoute(
-//         builder: (_) => const HomeScreen(),
-//       );
-//     case AppStrings.foundSomethingScreen:
-//       return MaterialPageRoute(
-//         builder: (_) => const FoundSomethingScreen(),
-//       );
-//     case AppStrings.lostSomethingScreen:
-//       return MaterialPageRoute(
-//         builder: (_) => const LostSomethingScreen(),
-//       );
-//     case AppStrings.forgetPasswordScreen:
-//       return MaterialPageRoute(
-//         builder: (_) => const ForgetPasswordScreen(),
-//       );
-//   }
-// }
 }

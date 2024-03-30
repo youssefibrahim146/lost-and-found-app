@@ -5,7 +5,7 @@ class AppDefaults {
     return Fluttertoast.showToast(
       msg: text,
       backgroundColor: Colors.transparent,
-      textColor: AppColors.white,
+      textColor: Colors.black,
       fontSize: 14,
     );
   }

@@ -90,7 +90,7 @@ packages:
     source: hosted
     version: "6.1.11"
   cloud_firestore_web:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: cloud_firestore_web
       sha256: "9d952d3c8d5b87c34712537154ff7580bdc29b8b9fb3bf43002304999e585653"
@@ -113,6 +113,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  cool_dropdown:
+    dependency: "direct main"
+    description:
+      name: cool_dropdown
+      sha256: "24400f57740b4779407586121e014bef241699ad2a52c506a7e1e7616cb68653"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   crypto:
     dependency: transitive
     description:

@@ -9,6 +9,9 @@ class AppStrings {
   static const String signUpRout = "/signUp";
   static const String loginRout = "/login";
   static const String homeRout = "/home";
+  static const String foundByOtherRout = "/foundByOther";
+  static const String foundBySearchRout = "/foundBySearch";
+  static const String addFoundItemRout = "/faddFoundItem";
 
   /// Assets
   static const String lostAndFoundAsset = "assets/lost and found icon.png";

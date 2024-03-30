@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:lost_found_app/constants/app_imports.dart';
 
 class LostSomethingScreen extends GetWidget<LostSomethingController> {
@@ -65,12 +66,18 @@ class LostSomethingScreen extends GetWidget<LostSomethingController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Column(
+                      // add button
+                      Column(
                         children: [
-                          Icon(
-                            Icons.add_circle_outline,
-                            size: 80.0,
-                            color: AppColors.white,
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(AppStrings.foundByOtherRout);
+                            },
+                            child: Icon(
+                              Icons.add_circle_outline,
+                              size: 80.0,
+                              color: AppColors.white,
+                            ),
                           ),
                           SizedBox(height: 14),
                           Text(
@@ -91,27 +98,33 @@ class LostSomethingScreen extends GetWidget<LostSomethingController> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
-                      const Column(
-                        children: [
-                          Icon(
-                            Icons.search_rounded,
-                            size: 80.0,
-                            color: AppColors.white,
-                          ),
-                          SizedBox(height: 14),
-                          Text(
-                            AppStrings.searchText,
-                            style: TextStyle(
+                      // search button
+                      InkWell(
+                        onTap: () {
+                          Get.toNamed(AppStrings.foundBySearchRout);
+                        },
+                        child: const Column(
+                          children: [
+                            Icon(
+                              Icons.search_rounded,
+                              size: 80.0,
                               color: AppColors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 30,
                             ),
-                          )
-                        ],
+                            SizedBox(height: 14),
+                            Text(
+                              AppStrings.searchText,
+                              style: TextStyle(
+                                color: AppColors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 30,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20.0),
+                  const SizedBox(height: 18.0),
                 ],
               ),
             ),

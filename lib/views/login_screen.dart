@@ -11,7 +11,7 @@ class LoginScreen extends GetWidget<LoginController> {
           children: [
             Container(
               padding: const EdgeInsets.symmetric(
-                vertical: 35,
+                vertical: 30,
               ),
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.55,
