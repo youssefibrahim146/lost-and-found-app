@@ -11,12 +11,23 @@ class HomeScreen extends GetWidget<HomeController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Image.asset(
-                AppStrings.profileAsset,
-                width: 50,
-                height: 50,
+            InkWell(
+              onTap: () {
+                controller.logout();
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: Text(
+                    "Logout",
+                    style: TextStyle(
+                      color: AppColors.blue,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ),
             ),
             Image.asset(
