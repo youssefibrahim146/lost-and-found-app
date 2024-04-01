@@ -114,7 +114,9 @@ class FoundByOtherScreen extends GetWidget<FoundByOtherController> {
               ),
               const SizedBox(height: 50),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(AppStrings.searchResultRout);
+                },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     vertical: 10,

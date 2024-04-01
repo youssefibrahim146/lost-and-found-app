@@ -12,6 +12,8 @@ class AppStrings {
   static const String signUpRout = "/signUp";
   static const String loginRout = "/login";
   static const String homeRout = "/home";
+  static const String searchResultRout = "/searchResult";
+  static const String itemDetailsRout = "/itemDetails";
 
   /// Assets
   static const String lostAndFoundAsset = "assets/lost and found icon.png";
@@ -54,7 +56,7 @@ class AppStrings {
   static const String accountDeletedSuccessfullyToast = "Account deleted successfully.";
   static const String connectionErrorToast = "Please check your internet connection.";
   static const String selectConditionToast = "Please select condition for this item.";
-  static const String selectCategoryToast = "Please select condition for this item.";
+  static const String selectCategoryToast = "Please select category for this item.";
   static const String verifyEmailFirstToast = "Please verify your email first.";
   static const String uploadImageToast = "Please upload images for this item.";
   static const String uploadedSuccessfullyToast = "Uploaded Successfully.";

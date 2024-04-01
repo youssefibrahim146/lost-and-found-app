@@ -36,3 +36,5 @@ export 'package:lost_found_app/views/login_screen.dart';
 export 'package:lost_found_app/views/lost_something_screen.dart';
 export 'package:lost_found_app/views/signup_screen.dart';
 export 'package:lost_found_app/views/widgets/auth_input_field.dart';
+export 'package:lost_found_app/views/search_result_screen.dart';
+export 'package:lost_found_app/views/item_details.dart';

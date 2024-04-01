@@ -99,11 +99,11 @@ class FoundSomethingController extends GetxController {
                 formState.currentState!.reset();
               },
             );
-          } else {
+          } else if (condition.value == AppStrings.emptySign){
             isLoading.value = false;
             AppDefaults.defaultToast(AppStrings.selectConditionToast);
           }
-        } else {
+        } else if(categoryBHint.value == AppStrings.emptySign){
           isLoading.value = false;
           AppDefaults.defaultToast(AppStrings.selectCategoryToast);
         }
@@ -142,7 +142,6 @@ class FoundSomethingController extends GetxController {
           AppStrings.descriptionField: description.toString(),
         },
       );
-
       AppDefaults.defaultToast(AppStrings.uploadedSuccessfullyToast);
     } catch (e) {
       AppDefaults.defaultToast(AppStrings.errorUploadingToast + e.toString());
