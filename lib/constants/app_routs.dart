@@ -46,7 +46,8 @@ class AppRouts {
       name: AppStrings.addFoundItemRout,
       page: () => const AddFoundItemScreen(),
       transition: Transition.noTransition,
-    ),GetPage(
+    ),
+    GetPage(
       name: AppStrings.searchResultRout,
       page: () => const SearchResultScreen(),
       transition: Transition.noTransition,
@@ -54,6 +55,16 @@ class AppRouts {
     GetPage(
       name: AppStrings.itemDetailsRout,
       page: () => const ItemDetails(),
+      transition: Transition.noTransition,
+    ),
+    GetPage(
+      name: AppStrings.foundSomethingCategoryRout,
+      page: () => const FoundSomethingCategoryScreen(),
+      transition: Transition.noTransition,
+    ),
+    GetPage(
+      name: AppStrings.searchResultRout,
+      page: () => const SearchResultScreen(),
       transition: Transition.noTransition,
     ),
   ];

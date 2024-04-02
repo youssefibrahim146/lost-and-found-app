@@ -40,41 +40,6 @@ class FoundSomethingScreen extends GetWidget<FoundSomethingController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // const SizedBox(height: 40),
-              // const Text(
-              //   AppStrings.plsSelectTheItemYouFoundText,
-              //   style: TextStyle(
-              //     fontSize: 20,
-              //     fontWeight: FontWeight.bold,
-              //     color: AppColors.white,
-              //   ),
-              // ),
-              // const SizedBox(height: 40),
-              // SizedBox(
-              //   child: GridView.builder(
-              //     physics: const NeverScrollableScrollPhysics(),
-              //     shrinkWrap: true,
-              //     itemCount: controller.categoriesData.length,
-              //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              //       crossAxisCount: 2,
-              //       crossAxisSpacing: 30,
-              //       mainAxisSpacing: 20,
-              //     ),
-              //     itemBuilder: (BuildContext context, int index) {
-              //       Categories category = controller.categoriesData[index];
-              //       return InkWell(
-              //         onTap: () {
-              //           Get.toNamed(AppStrings.addFoundItemRout, arguments: category);
-              //         },
-              //         child: categoryCard(
-              //           label: category.label,
-              //           img: category.img,
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // ),
-              // const SizedBox(height: 10),
               Form(
                 key: controller.formState,
                 child: Padding(
@@ -155,172 +120,190 @@ class FoundSomethingScreen extends GetWidget<FoundSomethingController> {
                           );
                         },
                       ),
-                      Divider(height: 50),
-                      Text(
-                        AppStrings.categoryText,
-                        style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      DropdownButtonHideUnderline(
-                        child: DropdownButton2<String>(
-                          isExpanded: true,
-                          hint: Row(
-                            children: [
-                              Icon(
-                                Icons.category_rounded,
-                                size: 24,
-                                color: AppColors.white,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Obx(
-                                () {
-                                  return Text(
-                                    controller.categoryBHint.value == AppStrings.emptySign ? AppStrings.selectCategoryText : controller.categoryBHint.value,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColors.white,
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                          items: controller.categoriesList
-                              .map(
-                                (item) => DropdownMenuItem(
-                                  value: item,
-                                  child: Text(
-                                    item,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColors.blue,
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
+                      controller.categoryFromArgs.hasCategory
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Divider(height: 50),
+                                Text(
+                                  AppStrings.categoryText,
+                                  style: TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                              )
-                              .toList(),
-                          onChanged: (value) {
-                            controller.categoryBHint.value = value!;
-                          },
-                          buttonStyleData: ButtonStyleData(
-                            height: 25,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                          ),
-                          iconStyleData: IconStyleData(
-                            icon: Icon(
-                              Icons.keyboard_arrow_right_rounded,
-                              size: 24,
-                              color: AppColors.white,
-                            ),
-                            openMenuIcon: Icon(
-                              Icons.keyboard_arrow_down_rounded,
-                              size: 24,
-                              color: AppColors.white,
-                            ),
-                            iconSize: 20,
-                            iconEnabledColor: AppColors.white,
-                            iconDisabledColor: AppColors.white,
-                          ),
-                          dropdownStyleData: DropdownStyleData(
-                            maxHeight: 200,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(14),
-                              color: AppColors.white,
-                            ),
-                            scrollbarTheme: ScrollbarThemeData(
-                              radius: Radius.circular(15),
-                            ),
-                          ),
-                          menuItemStyleData: MenuItemStyleData(
-                            padding: EdgeInsets.all(10),
-                          ),
-                        ),
-                      ),
-                      Divider(height: 50),
-                      Text(
-                        AppStrings.conditionText,
-                        style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Wrap(
-                        spacing: 8,
-                        runSpacing: 4,
-                        children: [
-                          Obx(
-                            () {
-                              return InkWell(
-                                onTap: controller.newButtonOnClick,
-                                child: Container(
-                                  height: 35,
-                                  width: 70,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    color: controller.newSelected.value == false ? AppColors.white : AppColors.blue,
-                                    borderRadius: BorderRadius.circular(15),
-                                    border: Border.all(
-                                      color: controller.newSelected.value == false ? AppColors.blue : AppColors.white,
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                DropdownButtonHideUnderline(
+                                  child: DropdownButton2<String>(
+                                    isExpanded: true,
+                                    hint: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.category_rounded,
+                                          size: 24,
+                                          color: AppColors.white,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Obx(
+                                          () {
+                                            return Text(
+                                              controller.categoryBHint.value == AppStrings.emptySign ? AppStrings.selectCategoryText : controller.categoryBHint.value,
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: AppColors.white,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            );
+                                          },
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                  child: Text(
-                                    AppStrings.newText,
-                                    style: TextStyle(
-                                      color: controller.newSelected.value == false ? AppColors.blue : AppColors.white,
-                                      fontSize: 14,
+                                    items: controller.categoriesList
+                                        .map(
+                                          (item) => DropdownMenuItem(
+                                            value: item,
+                                            child: Text(
+                                              item,
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                                color: AppColors.blue,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                        )
+                                        .toList(),
+                                    onChanged: (value) {
+                                      controller.categoryBHint.value = value!;
+                                    },
+                                    buttonStyleData: ButtonStyleData(
+                                      height: 25,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
+                                    ),
+                                    iconStyleData: IconStyleData(
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_right_rounded,
+                                        size: 24,
+                                        color: AppColors.white,
+                                      ),
+                                      openMenuIcon: Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        size: 24,
+                                        color: AppColors.white,
+                                      ),
+                                      iconSize: 20,
+                                      iconEnabledColor: AppColors.white,
+                                      iconDisabledColor: AppColors.white,
+                                    ),
+                                    dropdownStyleData: DropdownStyleData(
+                                      maxHeight: 200,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(14),
+                                        color: AppColors.white,
+                                      ),
+                                      scrollbarTheme: ScrollbarThemeData(
+                                        radius: Radius.circular(15),
+                                      ),
+                                    ),
+                                    menuItemStyleData: MenuItemStyleData(
+                                      padding: EdgeInsets.all(10),
                                     ),
                                   ),
                                 ),
-                              );
-                            },
-                          ),
-                          Obx(
-                            () {
-                              return InkWell(
-                                onTap: controller.usedButtonOnClick,
-                                child: Container(
-                                  height: 35,
-                                  width: 70,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    color: controller.usedSelected.value == false ? AppColors.white : AppColors.blue,
-                                    borderRadius: BorderRadius.circular(15),
-                                    border: Border.all(
-                                      color: controller.usedSelected.value == false ? AppColors.blue : AppColors.white,
-                                    ),
-                                  ),
-                                  child: Text(
-                                    AppStrings.usedText,
-                                    style: TextStyle(
-                                      color: controller.usedSelected.value == false ? AppColors.blue : AppColors.white,
-                                      fontSize: 14,
-                                    ),
+                              ],
+                            )
+                          : SizedBox(
+                              height: 0,
+                            ),
+                      controller.categoryFromArgs.hasCondition
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Divider(height: 50),
+                                Text(
+                                  AppStrings.conditionText,
+                                  style: TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Wrap(
+                                  spacing: 8,
+                                  runSpacing: 4,
+                                  children: [
+                                    Obx(
+                                      () {
+                                        return InkWell(
+                                          onTap: controller.newButtonOnClick,
+                                          child: Container(
+                                            height: 35,
+                                            width: 70,
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(
+                                              color: controller.newSelected.value == false ? AppColors.white : AppColors.blue,
+                                              borderRadius: BorderRadius.circular(15),
+                                              border: Border.all(
+                                                color: controller.newSelected.value == false ? AppColors.blue : AppColors.white,
+                                              ),
+                                            ),
+                                            child: Text(
+                                              AppStrings.newText,
+                                              style: TextStyle(
+                                                color: controller.newSelected.value == false ? AppColors.blue : AppColors.white,
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    Obx(
+                                      () {
+                                        return InkWell(
+                                          onTap: controller.usedButtonOnClick,
+                                          child: Container(
+                                            height: 35,
+                                            width: 70,
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(
+                                              color: controller.usedSelected.value == false ? AppColors.white : AppColors.blue,
+                                              borderRadius: BorderRadius.circular(15),
+                                              border: Border.all(
+                                                color: controller.usedSelected.value == false ? AppColors.blue : AppColors.white,
+                                              ),
+                                            ),
+                                            child: Text(
+                                              AppStrings.usedText,
+                                              style: TextStyle(
+                                                color: controller.usedSelected.value == false ? AppColors.blue : AppColors.white,
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )
+                          : SizedBox(
+                              height: 0,
+                            ),
                       Divider(height: 50),
                       Text(
                         AppStrings.infoText,
@@ -414,34 +397,6 @@ class FoundSomethingScreen extends GetWidget<FoundSomethingController> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget categoryCard({required String label, required String img}) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            img,
-            width: 80,
-            color: const Color.fromRGBO(37, 37, 37, 1),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            label,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color.fromRGBO(55, 55, 55, 1),
-            ),
-          ),
-        ],
       ),
     );
   }

@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:lost_found_app/constants/app_imports.dart';
 
-class FoundBySearchScreen extends StatelessWidget {
+class FoundBySearchScreen extends GetWidget<FoundBySearchController> {
   const FoundBySearchScreen({super.key});
 
   @override
@@ -15,7 +14,7 @@ class FoundBySearchScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: AppColors.white,
         title: const Text(
-          "Found your item",
+          AppStrings.foundYourItemText,
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
@@ -24,10 +23,7 @@ class FoundBySearchScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: 35,
-          horizontal: 30
-        ),
+        padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 30),
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
@@ -41,7 +37,7 @@ class FoundBySearchScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             Text(
-              "please search for your lost item",
+              AppStrings.searchForYourItemText,
               style: TextStyle(
                 fontSize: 20.0,
                 color: AppColors.white,
@@ -52,14 +48,18 @@ class FoundBySearchScreen extends StatelessWidget {
               height: 20,
             ),
             TextField(
+              controller: controller.searchController,
               decoration: InputDecoration(
-                hintText: "Search here...",
+                hintText: AppStrings.searchHereText,
                 hintStyle: TextStyle(
                   color: AppColors.grey,
                 ),
-                prefixIcon: const Icon(
-                  Icons.search,
-                  color: Colors.black,
+                prefixIcon: InkWell(
+                  onTap: controller.searchOnClick,
+                  child: const Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ),
                 ),
                 filled: true,
                 fillColor: AppColors.white,
@@ -70,27 +70,8 @@ class FoundBySearchScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 30,
-                ),
-                decoration:  BoxDecoration(
-                  color: AppColors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  "Search",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              textInputAction: TextInputAction.search,
+              onSubmitted: (value) => controller.searchOnClick(),
             ),
           ],
         ),

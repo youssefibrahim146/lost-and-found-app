@@ -3,18 +3,6 @@ import 'dart:io';
 import 'package:lost_found_app/constants/app_imports.dart';
 
 class FoundSomethingController extends GetxController {
-  // List<Categories> categoriesData = [
-  //   Categories(img: "assets/icons/phone.png", label: "Phone"),
-  //   Categories(img: "assets/icons/key.png", label: "Key"),
-  //   Categories(img: "assets/icons/ring.png", label: "Ring"),
-  //   Categories(img: "assets/icons/wallet.png", label: "Wallet"),
-  //   Categories(img: "assets/icons/bag.png", label: "Bag"),
-  //   Categories(img: "assets/icons/glasses.png", label: "Glasses"),
-  //   Categories(img: "assets/icons/laptop.png", label: "Laptop"),
-  //   Categories(img: "assets/icons/watch.png", label: "Watch"),
-  //   Categories(img: "assets/icons/other.png", label: "Other"),
-  // ];
-
   static FirebaseStorage storage = FirebaseStorage.instance;
   static const Duration timeoutDuration = Duration(seconds: 15);
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -24,6 +12,7 @@ class FoundSomethingController extends GetxController {
   RxBool newSelected = RxBool(false);
   RxBool usedSelected = RxBool(false);
   RxBool isDown = RxBool(false);
+  Categories categoryFromArgs = Get.arguments;
   final RxString categoryBHint = AppStrings.emptySign.obs;
   final RxString title = AppStrings.emptySign.obs;
   final RxString description = AppStrings.emptySign.obs;
@@ -41,6 +30,12 @@ class FoundSomethingController extends GetxController {
     AppStrings.watchText,
     AppStrings.otherText,
   ];
+
+  @override
+  onInit() {
+    super.onInit();
+    categoryBHint.value = categoryFromArgs.label;
+  }
 
   Future<void> pickImages() async {
     final picker = ImagePicker();
@@ -78,35 +73,25 @@ class FoundSomethingController extends GetxController {
       myFormsState.save();
       isLoading.value = true;
       if (images.length > 0) {
-        if (categoryBHint.value != AppStrings.emptySign) {
-          if (condition.value != AppStrings.emptySign) {
-            uploadPost(
-              category: categoryBHint.value,
-              condition: condition.value,
-              description: description,
-              images: images,
-              title: title,
-            ).then(
-              (value) {
-                isLoading.value = false;
-                images.value = RxList();
-                categoryBHint.value = AppStrings.emptySign;
-                condition.value = AppStrings.emptySign;
-                newSelected.value = false;
-                usedSelected.value = false;
-                title.value = AppStrings.emptySign;
-                description.value = AppStrings.emptySign;
-                formState.currentState!.reset();
-              },
-            );
-          } else if (condition.value == AppStrings.emptySign){
+        uploadPost(
+          category: categoryBHint.value,
+          condition: condition.value,
+          description: description,
+          images: images,
+          title: title,
+        ).then(
+          (value) {
             isLoading.value = false;
-            AppDefaults.defaultToast(AppStrings.selectConditionToast);
-          }
-        } else if(categoryBHint.value == AppStrings.emptySign){
-          isLoading.value = false;
-          AppDefaults.defaultToast(AppStrings.selectCategoryToast);
-        }
+            images.value = RxList();
+            categoryBHint.value = AppStrings.emptySign;
+            condition.value = AppStrings.emptySign;
+            newSelected.value = false;
+            usedSelected.value = false;
+            title.value = AppStrings.emptySign;
+            description.value = AppStrings.emptySign;
+            formState.currentState!.reset();
+          },
+        );
       } else {
         isLoading.value = false;
         AppDefaults.defaultToast(AppStrings.uploadImageToast);
@@ -140,6 +125,7 @@ class FoundSomethingController extends GetxController {
           AppStrings.conditionField: condition.toString(),
           AppStrings.titleField: title.toString(),
           AppStrings.descriptionField: description.toString(),
+          AppStrings.userEmailField: FirebaseAuth.instance.currentUser!.email,
         },
       );
       AppDefaults.defaultToast(AppStrings.uploadedSuccessfullyToast);
