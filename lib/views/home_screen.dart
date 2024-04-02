@@ -16,11 +16,11 @@ class HomeScreen extends GetWidget<HomeController> {
                 controller.logout();
               },
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 child: Align(
                   alignment: Alignment.topRight,
                   child: Text(
-                    "Logout",
+                    AppStrings.logoutText,
                     style: TextStyle(
                       color: AppColors.blue,
                       fontSize: 20,
@@ -58,7 +58,7 @@ class HomeScreen extends GetWidget<HomeController> {
                     appButton(
                       text: AppStrings.foundSomethingCaText,
                       onTap: () {
-                        Get.toNamed(AppStrings.foundSomethingRout);
+                        Get.toNamed(AppStrings.foundSomethingCategoryRout);
                       },
                     ),
                   ],

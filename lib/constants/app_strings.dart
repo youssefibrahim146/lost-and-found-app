@@ -3,17 +3,18 @@ class AppStrings {
   static const String appTitle = "Lost And Found";
 
   /// Routs
+  static const String foundSomethingCategoryRout = "/foundSomethingCategory";
   static const String forgotPasswordRout = "/forgotPassword";
   static const String foundSomethingRout = "/foundSomething";
   static const String lostSomethingRout = "/lostSomething";
   static const String foundBySearchRout = "/foundBySearch";
   static const String addFoundItemRout = "/faddFoundItem";
   static const String foundByOtherRout = "/foundByOther";
+  static const String searchResultRout = "/searchResult";
+  static const String itemDetailsRout = "/itemDetails";
   static const String signUpRout = "/signUp";
   static const String loginRout = "/login";
   static const String homeRout = "/home";
-  static const String searchResultRout = "/searchResult";
-  static const String itemDetailsRout = "/itemDetails";
 
   /// Assets
   static const String lostAndFoundAsset = "assets/lost and found icon.png";
@@ -38,6 +39,7 @@ class AppStrings {
   static const String descriptionField = "description";
   static const String authUsersDocument = "authUsers";
   static const String timestampField = "timestamp";
+  static const String userPhoneField = "userPhone";
   static const String userEmailField = "userEmail";
   static const String imageUrlsField = "imageUrls";
   static const String conditionField = "condition";
@@ -60,6 +62,7 @@ class AppStrings {
   static const String verifyEmailFirstToast = "Please verify your email first.";
   static const String uploadImageToast = "Please upload images for this item.";
   static const String uploadedSuccessfullyToast = "Uploaded Successfully.";
+  static const String errorFetchingToast = "Error fetching: ";
   static const String errorUploadingToast = "Error uploading: ";
 
   /// Validations
@@ -113,17 +116,24 @@ class AppStrings {
 
   /// Else
   static const String forgotPasswordSubTitleText = "Enter the email address that associated with your account";
+  static const String selectTheDataForYourItemText = "Select the data of your lost item";
   static const String plsSelectTheItemYouFoundText = "Please select the item you Found";
+  static const String noFoundItemForYourSearchText = "No Found items for that search";
   static const String helpToFindYourLostItemText = "Help Us to find your lost item";
+  static const String searchForYourItemText = "please search for your lost item";
   static const String foundSomethingSmText = "Found Something";
   static const String foundSomethingCaText = "FOUND SOMETHING";
   static const String lostSomethingCaText = "LOST SOMETHING";
   static const String lostSomethingSmText = "Lost Something";
   static const String forgotPasswordText = "Forget Password";
   static const String selectCategoryText = "Select Category";
+  static const String foundYourItemText = "Found your item";
+  static const String searchResultText = "Search Result";
   static const String alreadyUserText = "Already a User";
+  static const String searchHereText = "Search here...";
   static const String descriptionText = "Description";
   static const String conditionText = "Condition";
+  static const String itemNameText = "Item Name";
   static const String notUserText = "Not a User";
   static const String userNameText = "User Name";
   static const String categoryText = "Category";
@@ -136,6 +146,7 @@ class AppStrings {
   static const String searchText = "Search";
   static const String uploadText = "Upload";
   static const String imagesText = "Images";
+  static const String logoutText = "Logout";
   static const String priceText = "Price";
   static const String loginText = "Login";
   static const String emailText = "Email";

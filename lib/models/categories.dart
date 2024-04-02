@@ -1,6 +1,13 @@
 class Categories {
-  final String img;
-  final String label;
+  String img;
+  String label;
+  bool hasCategory;
+  bool hasCondition;
 
-  Categories({required this.img, required this.label});
+  Categories(
+    this.label, {
+    required this.img,
+    required this.hasCategory,
+    required this.hasCondition,
+  });
 }
