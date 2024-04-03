@@ -14,6 +14,7 @@ class FoundSomethingController extends GetxController {
   RxBool isDown = RxBool(false);
   Categories categoryFromArgs = Get.arguments;
   final RxString categoryBHint = AppStrings.emptySign.obs;
+  final RxString founderPhoneNumber = AppStrings.emptySign.obs;
   final RxString title = AppStrings.emptySign.obs;
   final RxString description = AppStrings.emptySign.obs;
   final RxString condition = AppStrings.emptySign.obs;
@@ -74,6 +75,7 @@ class FoundSomethingController extends GetxController {
       isLoading.value = true;
       if (images.length > 0) {
         uploadPost(
+          founderPhoneNumber: founderPhoneNumber.value,
           category: categoryBHint.value,
           condition: condition.value,
           description: description,
@@ -99,7 +101,7 @@ class FoundSomethingController extends GetxController {
     }
   }
 
-  static Future<void> uploadPost({images, category, condition, title, description}) async {
+  static Future<void> uploadPost({images, category, condition, title, description, required founderPhoneNumber}) async {
     DocumentReference documentReference = postsCollection.doc();
     List<String> imageUrls = [];
     Random random = Random();
@@ -126,6 +128,7 @@ class FoundSomethingController extends GetxController {
           AppStrings.titleField: title.toString(),
           AppStrings.descriptionField: description.toString(),
           AppStrings.userEmailField: FirebaseAuth.instance.currentUser!.email,
+          AppStrings.founderPhoneNumberField: founderPhoneNumber,
         },
       );
       AppDefaults.defaultToast(AppStrings.uploadedSuccessfullyToast);

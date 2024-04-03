@@ -1,5 +1,6 @@
 export 'dart:math';
 
+export 'package:carousel_slider/carousel_slider.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:cool_dropdown/cool_dropdown.dart';
 export 'package:cool_dropdown/models/cool_dropdown_item.dart';
@@ -25,6 +26,7 @@ export 'package:lost_found_app/controllers/found_by_search_controller.dart';
 export 'package:lost_found_app/controllers/found_something_category_controller.dart';
 export 'package:lost_found_app/controllers/found_something_controller.dart';
 export 'package:lost_found_app/controllers/home_controller.dart';
+export 'package:lost_found_app/controllers/item_details_controller.dart';
 export 'package:lost_found_app/controllers/login_controller.dart';
 export 'package:lost_found_app/controllers/lost_something_controller.dart';
 export 'package:lost_found_app/controllers/searched_controller.dart';

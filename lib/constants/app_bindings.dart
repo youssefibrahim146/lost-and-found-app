@@ -1,6 +1,4 @@
 import 'package:lost_found_app/constants/app_imports.dart';
-import 'package:lost_found_app/controllers/found_by_search_controller.dart';
-import 'package:lost_found_app/controllers/searched_controller.dart';
 
 class AppBindings extends Bindings {
   @override
@@ -43,6 +41,10 @@ class AppBindings extends Bindings {
     );
     Get.lazyPut(
       () => FoundBySearchController(),
+      fenix: true,
+    );
+    Get.lazyPut(
+      () => ItemDetailsController(),
       fenix: true,
     );
   }

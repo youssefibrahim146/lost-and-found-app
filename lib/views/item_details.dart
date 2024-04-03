@@ -1,13 +1,10 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:lost_found_app/constants/app_imports.dart';
 
-class ItemDetails extends StatelessWidget {
+class ItemDetails extends GetWidget<ItemDetailsController> {
   const ItemDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var data = Get.arguments;
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(
@@ -17,7 +14,7 @@ class ItemDetails extends StatelessWidget {
         elevation: 0,
         backgroundColor: AppColors.white,
         title: Text(
-          data.title,
+          controller.item.title,
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
@@ -26,7 +23,7 @@ class ItemDetails extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: controller.phoneIconOnClick,
         child: const Icon(
           Icons.call_rounded,
           color: AppColors.blue,
@@ -34,7 +31,8 @@ class ItemDetails extends StatelessWidget {
         backgroundColor: AppColors.white,
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 0),
+        height: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
         decoration: const BoxDecoration(
           color: AppColors.blue,
           borderRadius: BorderRadius.only(
@@ -47,14 +45,14 @@ class ItemDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CarouselSlider(
-                items: imageList(imgList: data.imageUrls),
+                items: imageList(imgList: controller.item.imageUrls),
                 options: CarouselOptions(
                   height: 210,
                   aspectRatio: 19 / 9,
                   viewportFraction: 0.5,
                   initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
+                  enableInfiniteScroll: false,
+                  reverse: true,
                   enlargeCenterPage: true,
                   scrollDirection: Axis.horizontal,
                 ),
@@ -69,12 +67,12 @@ class ItemDetails extends StatelessWidget {
               const SizedBox(height: 20),
               roundedContainerWithDetails(
                 text: "Condition",
-                details: data.condition,
+                details: controller.item.condition == AppStrings.emptySign ? AppStrings.notSureText : controller.item.condition,
               ),
               const SizedBox(height: 30),
               roundedContainerWithDetails(
                 text: "Type",
-                details: data.category,
+                details: controller.item.category,
               ),
               const SizedBox(height: 30),
               roundedContainerWithDetails(
@@ -84,7 +82,7 @@ class ItemDetails extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 child: Text(
-                  data.description,
+                  controller.item.description,
                   maxLines: 4,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -116,7 +114,7 @@ class ItemDetails extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  data.userEmail,
+                  controller.item.userEmail,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -132,9 +130,9 @@ class ItemDetails extends StatelessWidget {
     );
   }
 
-  Widget roundedContainerWithDetails(
-      {required String text, required String details}) {
+  Widget roundedContainerWithDetails({required String text, required String details}) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
           margin: const EdgeInsets.only(left: 20),
@@ -145,8 +143,7 @@ class ItemDetails extends StatelessWidget {
           ),
           child: Text(
             text,
-            style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
           ),
         ),
         const SizedBox(width: 40),

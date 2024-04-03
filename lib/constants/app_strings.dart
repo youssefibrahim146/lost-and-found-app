@@ -36,6 +36,7 @@ class AppStrings {
   static const String imagesExtensionText = ".jpg";
 
   /// Collection, Documents, Fields Name
+  static const String founderPhoneNumberField = "founderPhoneNumber";
   static const String descriptionField = "description";
   static const String authUsersDocument = "authUsers";
   static const String timestampField = "timestamp";
@@ -51,6 +52,12 @@ class AppStrings {
   static const String titleField = "title";
   static const String emailField = "email";
   static const String nameField = "name";
+
+  /// validations
+  static const String phoneNumberBadlyFormattedValidate = "Phone Number is badly formatted";
+  static const String badlyFormattedPhoneNumberValidate = "Phone Number is badly formatted";
+  static const String phoneNumberEmptyValidate = "Phone Number can't be empty";
+  static const String invalidPhoneNumberValidate = "Invalid Phone Number";
 
   /// Toasts
   static const String emailSentSuccessfullyToast = "Email sent successfully, please check your email to reset your password.";
@@ -131,6 +138,7 @@ class AppStrings {
   static const String searchResultText = "Search Result";
   static const String alreadyUserText = "Already a User";
   static const String searchHereText = "Search here...";
+  static const String phoneNumberText = "Phone Number";
   static const String descriptionText = "Description";
   static const String conditionText = "Condition";
   static const String itemNameText = "Item Name";
@@ -138,6 +146,7 @@ class AppStrings {
   static const String userNameText = "User Name";
   static const String categoryText = "Category";
   static const String passwordText = "Password";
+  static const String notSureText = "Not Sure";
   static const String glassesText = "Glasses";
   static const String signInText = "Sign in";
   static const String signupText = "Signup";
@@ -158,6 +167,7 @@ class AppStrings {
   static const String ringText = "Ring";
   static const String usedText = "Used";
   static const String sendText = "Send";
+  static const String telText = "tel: ";
   static const String newText = "New";
   static const String keyText = "Key";
   static const String bagText = "Bag";
