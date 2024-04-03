@@ -9,6 +9,7 @@ class PostsModel {
   String condition;
   String title;
   String description;
+  String founderPhoneNumber;
 
   PostsModel({
     required this.key,
@@ -19,6 +20,7 @@ class PostsModel {
     required this.condition,
     required this.title,
     required this.description,
+    required this.founderPhoneNumber,
   });
 
   factory PostsModel.fromFirestore(DocumentSnapshot document) {
@@ -33,6 +35,7 @@ class PostsModel {
       condition: data[AppStrings.conditionField] ?? AppStrings.emptySign,
       title: data[AppStrings.titleField] ?? AppStrings.emptySign,
       description: data[AppStrings.descriptionField] ?? AppStrings.emptySign,
+      founderPhoneNumber: data[AppStrings.founderPhoneNumberField] ?? AppStrings.emptySign,
     );
   }
 }

@@ -351,6 +351,32 @@ class FoundSomethingScreen extends GetWidget<FoundSomethingController> {
                       SizedBox(
                         height: 25,
                       ),
+                      AuthInputField(
+                        color: AppColors.white,
+                        maxLines: 10,
+                        onSaved: (value) {
+                          controller.founderPhoneNumber.value = value!;
+                        },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return AppStrings.phoneNumberEmptyValidate;
+                          } else if (value[0] != "0") {
+                            return AppStrings.phoneNumberBadlyFormattedValidate;
+                          } else if (value[1] != "1") {
+                            return AppStrings.phoneNumberBadlyFormattedValidate;
+                          } else if (value.length <= 10) {
+                            return AppStrings.invalidPhoneNumberValidate;
+                          } else if (value.length >= 12) {
+                            return AppStrings.invalidPhoneNumberValidate;
+                          }
+                          return null;
+                        },
+                        keyboardType: TextInputType.number,
+                        labelName: AppStrings.phoneNumberText,
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
                       Center(
                         child: Obx(
                           () {
