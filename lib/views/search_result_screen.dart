@@ -65,7 +65,7 @@ class SearchResultScreen extends GetWidget<SearchedController> {
                         return InkWell(
                           onTap: () => controller.searchedItemOnClick(post),
                           child: InkWell(
-                            onTap: () => Get.toNamed(AppStrings.itemDetailsRout, arguments: post.title),
+                            onTap: () => Get.toNamed(AppStrings.itemDetailsRout, arguments: post),
                             child: Container(
                               width: double.infinity,
                               height: 150,
