@@ -1,3 +1,4 @@
+import 'package:date_format/date_format.dart';
 import 'package:lost_found_app/constants/app_imports.dart';
 
 class ItemDetails extends GetWidget<ItemDetailsController> {
@@ -65,9 +66,13 @@ class ItemDetails extends GetWidget<ItemDetailsController> {
                 endIndent: 35,
               ),
               const SizedBox(height: 20),
+
+              /// condition
               roundedContainerWithDetails(
                 text: "Condition",
-                details: controller.item.condition == AppStrings.emptySign ? AppStrings.notSureText : controller.item.condition,
+                details: controller.item.condition == AppStrings.emptySign
+                    ? AppStrings.notSureText
+                    : controller.item.condition,
               ),
               const SizedBox(height: 30),
               roundedContainerWithDetails(
@@ -76,11 +81,40 @@ class ItemDetails extends GetWidget<ItemDetailsController> {
               ),
               const SizedBox(height: 30),
               roundedContainerWithDetails(
+                text: "Color",
+                details: controller.item.color,
+              ),
+              const SizedBox(height: 30),
+
+              roundedContainerWithDetails(
+                text: "Found date",
+                details: ""
+              ),
+              Padding(
+                padding:
+                const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                child: Text(
+                    formatDate(
+                      controller.item.timestamp.toDate(),
+                      [dd, '/', mm, '/', yyyy],
+                    ),
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: AppColors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 15),
+              roundedContainerWithDetails(
                 text: "Some Details",
                 details: "",
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 child: Text(
                   controller.item.description,
                   maxLines: 4,
@@ -130,7 +164,8 @@ class ItemDetails extends GetWidget<ItemDetailsController> {
     );
   }
 
-  Widget roundedContainerWithDetails({required String text, required String details}) {
+  Widget roundedContainerWithDetails(
+      {required String text, required String details}) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -143,7 +178,8 @@ class ItemDetails extends GetWidget<ItemDetailsController> {
           ),
           child: Text(
             text,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+            style: TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
           ),
         ),
         const SizedBox(width: 40),

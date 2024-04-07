@@ -46,11 +46,13 @@ class AppStrings {
   static const String conditionField = "condition";
   static const String userNameField = "userName";
   static const String categoryField = "category";
+
   static const String postsCollection = "posts";
   static const String usersCollection = "users";
   static const String emailsField = "emails";
   static const String titleField = "title";
   static const String emailField = "email";
+  static const String colorField = "color";
   static const String nameField = "name";
 
   /// validations
@@ -58,6 +60,7 @@ class AppStrings {
   static const String badlyFormattedPhoneNumberValidate = "Phone Number is badly formatted";
   static const String phoneNumberEmptyValidate = "Phone Number can't be empty";
   static const String invalidPhoneNumberValidate = "Invalid Phone Number";
+  static const String colorEmptyValidate = "Color can't be empty";
 
   /// Toasts
   static const String emailSentSuccessfullyToast = "Email sent successfully, please check your email to reset your password.";
@@ -155,6 +158,7 @@ class AppStrings {
   static const String searchText = "Search";
   static const String uploadText = "Upload";
   static const String imagesText = "Images";
+  static const String colorText = "Color";
   static const String logoutText = "Logout";
   static const String priceText = "Price";
   static const String loginText = "Login";

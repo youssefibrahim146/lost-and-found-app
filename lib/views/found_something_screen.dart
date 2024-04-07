@@ -27,8 +27,8 @@ class FoundSomethingScreen extends GetWidget<FoundSomethingController> {
         padding: const EdgeInsets.symmetric(
           horizontal: 10,
         ),
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height,
+     width: double.infinity,
+  height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           color: AppColors.blue,
           borderRadius: BorderRadius.vertical(
@@ -373,6 +373,23 @@ class FoundSomethingScreen extends GetWidget<FoundSomethingController> {
                         },
                         keyboardType: TextInputType.number,
                         labelName: AppStrings.phoneNumberText,
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      AuthInputField(
+                        color: AppColors.white,
+                        onSaved: (value) {
+                          controller.color.value = value!;
+                        },
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return AppStrings.colorEmptyValidate;
+                          }
+                          return null;
+                        },
+                        keyboardType: TextInputType.text,
+                        labelName: AppStrings.colorText,
                       ),
                       SizedBox(
                         height: 25,

@@ -10,6 +10,7 @@ class PostsModel {
   String title;
   String description;
   String founderPhoneNumber;
+  String color;
 
   PostsModel({
     required this.key,
@@ -21,6 +22,7 @@ class PostsModel {
     required this.title,
     required this.description,
     required this.founderPhoneNumber,
+    required this.color,
   });
 
   factory PostsModel.fromFirestore(DocumentSnapshot document) {
@@ -36,6 +38,7 @@ class PostsModel {
       title: data[AppStrings.titleField] ?? AppStrings.emptySign,
       description: data[AppStrings.descriptionField] ?? AppStrings.emptySign,
       founderPhoneNumber: data[AppStrings.founderPhoneNumberField] ?? AppStrings.emptySign,
+      color: data[AppStrings.colorField] ?? AppStrings.emptySign,
     );
   }
 }
