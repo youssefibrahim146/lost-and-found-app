@@ -100,7 +100,7 @@ class ForgetPasswordScreen extends GetWidget<ForgotPasswordController> {
                           ),
                           Obx(
                             () {
-                              return controller.isLoading.value
+                              return !controller.isLoading.value
                                   ? InkWell(
                                       onTap: controller.onSubmitClick,
                                       child: Container(

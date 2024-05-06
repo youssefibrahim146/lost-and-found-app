@@ -21,11 +21,40 @@ class LoginController extends GetxController {
           );
           return userCredential;
         } on FirebaseAuthException catch (e) {
+          print("=============================");
+          print(e.code);
           isLoading.value = false;
+          if (e.code == AppStrings.userNotFoundCode) {
+            AppDefaults.defaultToast(AppStrings.userNotFoundToast);
+          }else if(e.code == "invalid-credential"){
+            AppDefaults.defaultToast("Email or Password is incorrect");
+          }
+          else if (e.code == AppStrings.wrongPasswordCode) {
+            AppDefaults.defaultToast(AppStrings.wrongPasswordToast);
+          } else if (e.code == AppStrings.tooManyRequestsCode) {
+            AppDefaults.defaultToast(AppStrings.tooManyRequestsToast);
+          } else if (e.code == AppStrings.userDisabledCode) {
+            AppDefaults.defaultToast(AppStrings.userDisabledToast);
+          } else if (e.code == AppStrings.emailAlreadyInUseCode) {
+            AppDefaults.defaultToast(AppStrings.emailAlreadyInUseToast);
+          } else if (e.code == AppStrings.weakPasswordCode) {
+            AppDefaults.defaultToast(AppStrings.weakPasswordToast);
+          } else if (e.code == AppStrings.invalidEmailCode) {
+            AppDefaults.defaultToast(AppStrings.invalidEmailToast);
+          } else if (e.code == AppStrings.operationNotAllowedCode) {
+            AppDefaults.defaultToast(AppStrings.operationNotAllowedToast);
+          } else if (e.code == AppStrings.emailNotVerifiedCode) {
+            AppDefaults.defaultToast(AppStrings.emailNotVerifiedToast);
+          } else {
+            AppDefaults.defaultToast(AppFormats.textFormatter(e.toString(), AppStrings.spaceSign));
+
+          }
           AppDefaults.defaultToast(AppFormats.textFormatter(e.toString(), AppStrings.spaceSign));
+          return null;
         } catch (e) {
           isLoading.value = false;
           AppDefaults.defaultToast(AppFormats.textFormatter(e.toString(), AppStrings.spaceSign));
+          return null;
         }
       } else {
         isLoading.value = false;
@@ -35,7 +64,7 @@ class LoginController extends GetxController {
   }
 
   void onSubmitClick() async {
-    UserCredential res = await loginValidator();
+    UserCredential? res = await loginValidator();
     if (res != null && FirebaseAuth.instance.currentUser!.emailVerified) {
       Get.offAllNamed(AppStrings.homeRout);
     } else {

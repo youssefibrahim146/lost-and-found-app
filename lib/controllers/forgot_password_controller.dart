@@ -3,7 +3,7 @@ import 'package:lost_found_app/constants/app_imports.dart';
 class ForgotPasswordController extends GetxController {
   GlobalKey<FormState> forgotPasswordFomState = GlobalKey<FormState>();
   String? emailAddress;
-  RxBool isLoading = RxBool(false);
+  RxBool isLoading = false.obs;
 
   forgotPasswordValidator() async {
     FocusManager.instance.primaryFocus?.unfocus();

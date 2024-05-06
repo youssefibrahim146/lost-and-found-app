@@ -61,6 +61,24 @@ class AppStrings {
   static const String phoneNumberEmptyValidate = "Phone Number can't be empty";
   static const String invalidPhoneNumberValidate = "Invalid Phone Number";
   static const String colorEmptyValidate = "Color can't be empty";
+  static const String userNotFoundCode = "user-not-found";
+  static const String userNotFoundToast = "Email in not exist in our database";
+  static const String wrongPasswordCode = "wrong-password";
+  static const String wrongPasswordToast = "Wrong Password";
+  static const String tooManyRequestsCode = "too-many-requests";
+  static const String tooManyRequestsToast = "Too many requests, please try again later";
+  static const String userDisabledCode = "user-disabled";
+  static const String userDisabledToast = "User is disabled";
+  static const String emailAlreadyInUseCode = "email-already-in-use";
+  static const String emailAlreadyInUseToast = "Email is already in use";
+  static const String weakPasswordCode = "weak-password";
+  static const String weakPasswordToast = "Password is too weak";
+  static const String invalidEmailCode = "invalid-email";
+  static const String invalidEmailToast = "Invalid Email";
+  static const String operationNotAllowedCode = "operation-not-allowed";
+  static const String operationNotAllowedToast = "Operation is not allowed";
+  static const String emailNotVerifiedCode = "email-not-verified";
+  static const String emailNotVerifiedToast = "Email is not verified";
 
   /// Toasts
   static const String emailSentSuccessfullyToast = "Email sent successfully, please check your email to reset your password.";
